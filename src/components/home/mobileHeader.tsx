@@ -31,8 +31,6 @@ const MobileHeader = ({ className }: Props) => {
         </div>
         <span className="self-end font-bold text-xl  text-gray-500">©</span>
       </div>
-
-      <div></div>
     </div>
   );
 };

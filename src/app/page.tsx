@@ -1,5 +1,8 @@
 import Header from "@/components/home/header";
+import Hustlers from "@/components/home/hustlers";
+import MobileBottom from "@/components/home/mobileBottom";
 import MobileHeader from "@/components/home/mobileHeader";
+import Video from "@/components/home/video";
 import React from "react";
 
 const page = () => {
@@ -7,12 +10,15 @@ const page = () => {
     <div
       className="
         bg-[#0b0e13]
-        px-5 py-2 md:py-5 md:px-10
+        
         
       "
     >
       <MobileHeader className="md:hidden" />
+      <MobileBottom />
       <Header className="hidden md:flex" />
+      <Video />
+      <Hustlers />
     </div>
   );
 };
