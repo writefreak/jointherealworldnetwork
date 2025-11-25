@@ -2,6 +2,7 @@ import Header from "@/components/home/header";
 import Hustlers from "@/components/home/hustlers";
 import MobileBottom from "@/components/home/mobileBottom";
 import MobileHeader from "@/components/home/mobileHeader";
+import Slider from "@/components/home/slider";
 import Video from "@/components/home/video";
 import React from "react";
 
@@ -19,6 +20,7 @@ const page = () => {
       <Header className="hidden md:flex" />
       <Video />
       <Hustlers />
+      <Slider />
     </div>
   );
 };
