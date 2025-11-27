@@ -1,10 +1,12 @@
 import React from "react";
 import Progress from "../ui/progress";
+import Left from "./left";
+import Right from "./left";
 
 const Slider = () => {
   return (
-    <div className="hidden md:flex px-14 pt-18 items-center gap-12">
-      <div className="flex flex-col gap-6">
+    <div className="hidden md:flex px-14 pt-18 gap-12">
+      <div className="flex flex-col justify-center gap-6">
         {details.map((d) => (
           <div key={d.id} className="flex items-center gap-9">
             <img src="/tick.svg" alt="" />
@@ -15,6 +17,7 @@ const Slider = () => {
         ))}
       </div>
       <Progress />
+      <Right />
     </div>
   );
 };

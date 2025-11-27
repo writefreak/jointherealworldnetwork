@@ -1,50 +1,64 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
-// Component to represent the circular indicator/dot
-const ProgressDot: React.FC<{ position: "top" | "middle" | "bottom" }> = ({
-  position,
-}) => {
-  // Define position classes based on the prop
+interface ProgressDotProps {
+  position: "top" | "middle" | "bottom";
+  y?: MotionValue<number>;
+}
+
+const ProgressDot: React.FC<ProgressDotProps> = ({ position, y }) => {
   let positionClasses = "";
+
   if (position === "top") {
-    // Place at the top of the line
-    positionClasses = "top-20";
-  } else if (position === "middle") {
-    // Place in the vertical center, and use translate-y-1/2 to account for dot height
-    positionClasses = "top-1/2 -translate-y-1/2";
-  } else if (position === "bottom") {
-    // Place at the bottom of the line
-    positionClasses = "-bottom-2";
+    positionClasses = "top-2 md:top-15";
+  }
+
+  if (position === "middle") {
+    positionClasses = "top-[526px]";
+    // immediately after line
+  }
+
+  if (position === "bottom") {
+    positionClasses = "top-[780px] md:top-[500px]";
   }
 
   const commonClasses =
     "absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#f2bb35] shadow-lg";
 
-  // Combine classes
-  return <div className={`${commonClasses} ${positionClasses}`}></div>;
+  return (
+    <motion.div
+      style={{ y: y ?? 0 }}
+      className={`${commonClasses} ${positionClasses}`}
+    />
+  );
 };
 
-const Progress = () => {
+const Progress: React.FC = () => {
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const topY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+
+  const middleY = useTransform(scrollYProgress, [0, 1], [0, 420]);
+
+  const bottomY = useTransform(scrollYProgress, [0, 1], [0, 500]);
+
   return (
-    // Main container centered on a dark background (assumed from the image)
-    <div className="flex justify-center items-center min-h-screen  text-white">
-      {/* This is the progress bar container. 
-              - relative: crucial for positioning the dots absolutely within it.
-            */}
+    <div
+      ref={containerRef}
+      className="flex md:justify-center md:items-center min-h-screen text-white bg-[#0b0e13]"
+    >
       <div className="relative">
-        <div className="w-[3px] h-[500px] bg-linear-to-b from-transparent via-[#ffffff] to-transparent"></div>
+        <div className="w-[3px] h-[800px] md:h-[500px] bg-linear-to-b from-transparent via-white to-transparent" />
 
-        {/* --- Indicator Dots --- */}
-
-        <ProgressDot position="top" />
-
-        <div className="">
-          <ProgressDot position="middle" />
-        </div>
-
-        <div>
-          <ProgressDot position="bottom" />
-        </div>
+        <ProgressDot position="top" y={topY} />
+        <ProgressDot position="middle" y={middleY} />
+        <ProgressDot position="bottom" y={bottomY} />
       </div>
     </div>
   );
