@@ -12,15 +12,15 @@ const ProgressDot: React.FC<ProgressDotProps> = ({ position, y }) => {
   let positionClasses = "";
 
   if (position === "top") {
-    positionClasses = "top-2 md:top-3";
+    positionClasses = "top-1 md:top-3";
   }
 
   if (position === "middle") {
-    positionClasses = "top-[297px]";
+    positionClasses = "md:top-[297px] top-[650px]";
   }
 
   if (position === "bottom") {
-    positionClasses = "top-[780px] md:top-[780px]";
+    positionClasses = "top-[970px] md:top-[780px]";
   }
 
   const commonClasses =

@@ -1,14 +1,13 @@
 import React from "react";
 
-const Private = () => {
+const MobilePrivate = () => {
   return (
-    <div>
-      <div className="flex flex-col gap-32">
+    <div className="">
+      <div className="flex flex-col gap-32 ">
         {details.map((d) => (
           <div key={d.id} className="flex flex-col gap-10">
-            {/* IMAGE + TITLE */}
-            <div className="flex items-center gap-8">
-              <div className="md:h-21 md:w-21 w-11 h-11">
+            <div className="flex items-center gap-5">
+              <div className="md:h-21 md:w-21 w-13 h-13">
                 <img
                   src={d.img}
                   alt=""
@@ -16,7 +15,7 @@ const Private = () => {
                 />
               </div>
 
-              <h2 className="text-[40px] font-satoshi font-semibold">
+              <h2 className="text-[27px] font-satoshi font-semibold">
                 {d.id === 2 ? (
                   <>
                     Access to
@@ -30,12 +29,12 @@ const Private = () => {
             </div>
 
             {/* TICKS: each section gets its OWN ticks */}
-            <div className="flex flex-col gap-6 pl-3">
+            <div className="flex flex-col gap-4 pl-3">
               {(d.id === 1 ? privateTicks : millionaireTicks).map((t) => (
                 <div key={t.id} className="flex  gap-8">
                   <img src="/tick.svg" alt="" className="" />
 
-                  <h3 className="text-gray-400 text-[21px] leading-snug font-satoshi font-medium">
+                  <h3 className="text-gray-400 text-[17px] leading-snug font-satoshi font-medium">
                     {getStyledText(t.slug, d.id)}
                   </h3>
                 </div>
@@ -48,7 +47,7 @@ const Private = () => {
   );
 };
 
-export default Private;
+export default MobilePrivate;
 /* SECTION TITLES */
 const details = [
   {
@@ -109,21 +108,6 @@ function getStyledText(text: string, sectionId: number) {
   if (!item || !item.bold) return text;
 
   // Special case: income split (same logic as your original)
-  if (item.bold.includes("income")) {
-    const parts = item.bold.split("income");
-    const beforeIncome = parts[0];
-
-    return (
-      <>
-        <span className="text-gray-400">{text.split(item.bold)[0]}</span>
-        <span className="text-white font-medium font-satoshi">
-          {beforeIncome}
-        </span>
-        <br />
-        <span className="text-white font-medium font-satoshi">income</span>
-      </>
-    );
-  }
 
   const parts = text.split(item.bold);
 

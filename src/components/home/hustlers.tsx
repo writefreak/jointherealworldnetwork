@@ -30,7 +30,7 @@ const Hustlers = () => {
           />
         </div>
         <div className="flex flex-col gap-2 items-center justify-center">
-          <span className="text-[#707275] font-medium font-satoshi text-xs md:text-[16px] text-[13px]">
+          <span className="text-[#707275] font-medium font-satoshi text-xs md:text-[16px] text-[15px]">
             INTRODUCING
           </span>
           <h1 className="text-white md:text-4xl text-4xl font-satoshi">

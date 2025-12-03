@@ -3,9 +3,12 @@ import Hustlers from "@/components/home/hustlers";
 import Left from "@/components/home/left";
 import MobileBottom from "@/components/home/mobileBottom";
 import MobileHeader from "@/components/home/mobileHeader";
+import MobilePrivate from "@/components/home/mobilePrivate";
+import NewMobile from "@/components/home/newMobile";
 import Private from "@/components/home/private";
 import Right from "@/components/home/right";
 import Video from "@/components/home/video";
+import WhatToLearn from "@/components/home/whatToLearn";
 import { Button } from "@/components/ui/button";
 import Progress from "@/components/ui/progress";
 import React from "react";
@@ -26,13 +29,31 @@ const page = () => {
           <Right />
         </div>
       </div>
-      <div className="md:flex justify-end pr-8 hidden">
+      <div className="md:flex md:justify-end pr-8 hidden">
         <Private />
       </div>
-      <div className="flex items-center justify-center pt-36">
+
+      <div>
+        <div className="md:hidden flex flex-col gap-32">
+          <NewMobile />
+          <div className="pl-12">
+            <MobilePrivate />
+          </div>
+        </div>
+        <div className="md:hidden items-center justify-center pt-16 flex">
+          <Button className=" rounded-md text-[18px] text-black bg-linear-to-b from-[#FFC81D] to-[#FF8B25] font-league font-bold py-[23px] w-48">
+            JOIN NOW
+          </Button>
+        </div>
+      </div>
+      <div className="md:flex items-center justify-center pt-36 hidden">
         <Button className=" rounded-md text-[15px] md:text-[24px] text-black bg-linear-to-b from-[#FFC81D] to-[#FF8B25] font-league font-bold py-[26px] md:w-44 w-36">
           JOIN NOW
         </Button>
+      </div>
+
+      <div>
+        <WhatToLearn />
       </div>
     </div>
   );
